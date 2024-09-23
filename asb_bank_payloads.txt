@@ -1,0 +1,38 @@
+
+
+POST: localhost:8080/api/onboard/customer
+{
+    "fullName": "Chandran",
+	"age": "23",
+	"gender": "Male",
+	"address": "Chennai",
+	"occupation": "Software",
+	"accounts": [
+		{
+			"accountType": "Savings",
+			"balanceAmount": 30000
+		}
+	]
+}
+
+
+PUT: localhost:8080/api/modify/customer
+{
+	"customerId": 1
+    "fullName": "Chandran",
+	"age": "23",
+	"gender": "Male",
+	"address": "Chennai",
+	"occupation": "Software",
+	"accounts": [
+		{
+			"accountId": 1,
+			"accountType": "Savings",
+			"balanceAmount": 30000
+		}
+	]
+}
+
+GET: localhost:8080/api/customers
+
+DELETE: localhost:8081/api/offboard/1
