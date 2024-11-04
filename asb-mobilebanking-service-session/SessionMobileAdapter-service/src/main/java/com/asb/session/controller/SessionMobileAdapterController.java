@@ -41,8 +41,9 @@ public class SessionMobileAdapterController implements SessionMobileAdapterPubli
 
 		ResponseEntity<Customer> onboardCustomer = sessionBusiness.createCustomer(customer);
 
-		logger.info("SessionMobileAdapterController -> onboardCustomer:: "+onboardCustomer.getBody().toString());
-		return new ResponseEntity<>(objectMapper.convertValue(onboardCustomer.getBody(), CustomerDTO.class), HttpStatus.OK);
+		logger.info("SessionMobileAdapterController -> onboardCustomer:: " + onboardCustomer.getBody().getCustomerId());
+		return new ResponseEntity<>(objectMapper.convertValue(onboardCustomer.getBody(), CustomerDTO.class),
+				HttpStatus.OK);
 	}
 
 	@Override
@@ -52,15 +53,16 @@ public class SessionMobileAdapterController implements SessionMobileAdapterPubli
 		customer.getAccounts().forEach(acc -> acc.setCustomer(customer));
 
 		ResponseEntity<Customer> updatedCustomer = sessionBusiness.updateCustomer(customer);
-		logger.info("SessionMobileAdapterController -> modifyCustomer:: "+updatedCustomer.toString());
-		return new ResponseEntity<>(objectMapper.convertValue(updatedCustomer.getBody(), CustomerDTO.class), HttpStatus.OK);
+		logger.info("SessionMobileAdapterController -> modifyCustomer:: " + updatedCustomer.toString());
+		return new ResponseEntity<>(objectMapper.convertValue(updatedCustomer.getBody(), CustomerDTO.class),
+				HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<String> offboardCustomer(@PathVariable(name = "customer_id") String customerId) {
 
 		sessionBusiness.deleteCustomer(customerId);
-		logger.info("SessionMobileAdapterController -> offboardCustomer:: "+customerId);
+		logger.info("SessionMobileAdapterController -> offboardCustomer:: " + customerId);
 		return new ResponseEntity<>("Customer Offboarded successfully", HttpStatus.OK);
 	}
 
@@ -70,7 +72,7 @@ public class SessionMobileAdapterController implements SessionMobileAdapterPubli
 		ResponseEntity<List<Customer>> customers = sessionBusiness.retrieveCustomers();
 		List<CustomerDTO> customersDTO = customers.getBody().stream()
 				.map(c -> objectMapper.convertValue(c, CustomerDTO.class)).collect(Collectors.toList());
-		logger.info("SessionMobileAdapterController -> retrieveCustomers:: "+customersDTO.toString());
+		logger.info("SessionMobileAdapterController -> retrieveCustomers:: " + customersDTO.toString());
 		return new ResponseEntity<List<CustomerDTO>>(customersDTO, HttpStatus.OK);
 	}
 

@@ -31,6 +31,5 @@ public interface SessionMobileAdapterPublicService {
 	ResponseEntity<String> offboardCustomer(@PathVariable(name = "customer_id") String customerId);
 
 	@RequestMapping(value = "/api/customers", method = RequestMethod.GET, produces = "application/JSON")
-	ResponseEntity<List<CustomerDTO>> retrieveCustomers();
-
+	ResponseEntity<List<CustomerDTO>> retrieveCustomers();	
 }

@@ -1,0 +1,32 @@
+version: '3'
+services:
+  eureka-registry:
+    image: eureka-registry
+    ports:
+      - 8761:8761
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://localhost:8761/eureka
+    depends_on:
+      - eureka-registry
+    
+  asb_mobilebanking-service-session:
+    image: asb_mobilebanking-service-session
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://localhost:8761/eureka
+    depends_on:
+      - eureka-registry      
+    ports:
+      - 8080:8080
+      
+  asb_businessbanking-service-session:
+    image: asb_businessbanking-service-session
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://localhost:8761/eureka        
+    restart: on-failure
+    depends_on:
+      - eureka-registry
+    ports:
+      - 8081:8081

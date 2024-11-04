@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>ASB Bank</title>
+<link th:href="@{/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/custom.css}" rel="stylesheet" />
+</head>
+<div th:replace="fragments/header"></div>
+<body>
+	<div class="container w-50 p-4">
+		<div>
+			<h4>Create/Update ASB Customer</h4>
+		</div>
+
+		<form action="#" th:action="@{/api/ui/create/customer}" method="post" th:object="${customerDto}">
+			<div class="form-group row">
+				<label for="text" class="col-4 col-form-label">Customer Name</label>
+				<div class="col-8">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fa fa-address-card"></i>
+							</div>
+						</div>
+						<input id="fullName" name="fullName" placeholder="Enter Full Name"
+							type="fullName" class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="age" class="col-4 col-form-label">Age</label>
+				<div class="col-8">
+					<input id="age" name="age" type="text" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="gender" class="col-4 col-form-label">Gender</label>
+				<div class="col-8">
+					<select id="gender" name="gender" class="custom-select">
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="address" class="col-4 col-form-label">Address</label>
+				<div class="col-8">
+					<input id="address" name="address" placeholder="Enter City"
+						type="text" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="occupation" class="col-4 col-form-label">Occupation</label>
+				<div class="col-8">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fa "></i>
+							</div>
+						</div>
+						<input id="occupation" name="occupation"
+							placeholder="Enter Occupation" type="text" class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="accountType" class="col-4 col-form-label">Account
+					Type</label>
+				<div class="col-8">
+					<select id="accountType" th:field="*{accounts[0].accountType}" name="accountType" class="custom-select">
+						<option value="Current">Current</option>
+						<option value="Savings">Savings</option>
+						<option value="Loan">Loan</option>
+						<option value="Bond">Bond</option>
+						<option value="Joint">Joint</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="balance" class="col-4 col-form-label">Balance
+					Amount</label>
+				<div class="col-8">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fa "></i>
+							</div>
+						</div>
+						<input id="balance" name="balance"
+							placeholder="Enter Balance Amount" type="text"
+							th:field="*{accounts[0].balanceAmount}"
+							class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="offset-4 col-8">
+					<button name="submit" type="submit" class="btn btn-primary">Create</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"></div>
+</html>

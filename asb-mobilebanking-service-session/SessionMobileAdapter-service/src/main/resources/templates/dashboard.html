@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>ASB Bank</title>
+<link th:href="@{/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/custom.css}" rel="stylesheet" />
+</head>
+<div th:replace="fragments/header"></div>
+<body>
+	<div class="container">
+		<div class="row">
+			<table class="table table-responsive table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Customer ID</th>
+						<th>Customer Name</th>
+						<th>Age</th>
+						<th>Address</th>
+						<th>Occupation</th>
+						<th>Account Type</th>
+						<th>Balance</th>
+						<th>Remove</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="customer : ${customers}">
+						<td th:text="${customer.customerId}"></td>
+						<td th:text="${customer.fullName}"></td>
+						<td th:text="${customer.age}"></td>
+						<td th:text="${customer.address}"></td>
+						<td th:text="${customer.occupation}"></td>
+						<td th:text="${customer.accounts[0].accountType}"></td>
+						<td th:text="${customer.accounts[0].balanceAmount}"></td>
+						<td><a
+							th:href="@{/api/offboard/{id}(id=${customer.customerId})}"
+							class="btn btn-danger" id="eBtn"
+							th:data="${customer.customerId}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"></div>
+</html>

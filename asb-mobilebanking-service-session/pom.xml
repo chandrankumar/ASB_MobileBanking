@@ -19,4 +19,5 @@
 		<module>SessionMobileAdapter-client</module>
 		<module>SessionMobileAdapter-service</module>
 	</modules>
+	
 </project>
