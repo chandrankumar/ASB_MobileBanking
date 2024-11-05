@@ -35,7 +35,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.asb.api.session</groupId>
+			<groupId>com.asb.mobile.session</groupId>
 			<artifactId>SessionMobileAdapter-client</artifactId>
 			<version>0.0.1</version>
 		</dependency>
