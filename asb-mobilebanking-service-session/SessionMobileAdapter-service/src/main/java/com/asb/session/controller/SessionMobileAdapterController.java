@@ -75,5 +75,10 @@ public class SessionMobileAdapterController implements SessionMobileAdapterPubli
 		logger.info("SessionMobileAdapterController -> retrieveCustomers:: " + customersDTO.toString());
 		return new ResponseEntity<List<CustomerDTO>>(customersDTO, HttpStatus.OK);
 	}
+	
+	@Override
+	public String testAPI() {
+		return "Running inside Ec2 Instance..........!";
+	}
 
 }

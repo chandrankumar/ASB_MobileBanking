@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +32,8 @@ public interface SessionMobileAdapterPublicService {
 	ResponseEntity<String> offboardCustomer(@PathVariable(name = "customer_id") String customerId);
 
 	@RequestMapping(value = "/api/customers", method = RequestMethod.GET, produces = "application/JSON")
-	ResponseEntity<List<CustomerDTO>> retrieveCustomers();	
+	ResponseEntity<List<CustomerDTO>> retrieveCustomers();
+
+	@GetMapping(value = "/api/aws/")
+	public String testAPI();
 }
